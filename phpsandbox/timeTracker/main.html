@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div id="divs">
+        <div>First</div>
+        <div class="selected">Second</div>
+        <div>Third</div>
+        <div>Fourth</div>
+    </div>
+
+    <p id="output"></p>
+
+    <script>
+
+      var divs = $('#divs > div'),
+          output = $('#output'),
+          tarr = [0, 0, 0, 0],
+          delay = 100;
+
+      divs.click(function() {
+          $(this).addClass('selected').siblings().removeClass('selected');
+      });
+
+      setInterval(function() {
+          var idx = divs.filter('.selected').index();
+          tarr[idx] = tarr[idx] + delay;
+          output.text('Times (in ms): ' + tarr);
+      }, delay);
+
+
+      </script>
+
+  </body>
+</html>
